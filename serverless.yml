@@ -1,0 +1,33 @@
+service: video-thumb-generator # NOTE: update this with your service name
+plugins:
+  - serverless-offline
+  - serverless-plugin-existing-s3
+provider:
+  name: aws
+  stage: dev
+  region: us-east-1
+  profile: default
+  runtime: nodejs6.10
+  memorySize: 256
+  timeout: 30
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "sns:*"
+      Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "s3:*"
+      Resource:
+       Fn::Join:
+        - ""
+        - - "*"
+functions:
+  thumbnailer:
+    handler: thumbnailer
+    events:
+      - s3:
+          bucket: <your-bucket-name>
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: <folder-name>/

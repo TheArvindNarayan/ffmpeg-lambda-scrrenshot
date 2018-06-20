@@ -1,0 +1,19 @@
+{
+  "name": "ffmpeg-lambda",
+  "version": "1.0.0",
+  "description": "lambda function to Generate Video Thumbnail",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "arvind",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "aws-sdk": "^2.213.1"
+  },
+  "devDependencies": {
+    "serverless-offline": "^3.18.0"
+  }
+}
